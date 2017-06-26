@@ -1,0 +1,33 @@
+
+Vagrant.configure("2") do |config|
+
+ config.vm.define "jenkins_node" do |jenkins_node|
+    jenkins_node.vm.box = "bento/centos-7.2"
+	jenkins_node.vm.network "private_network", ip: "192.168.25.10"
+   end
+
+ config.vm.define "docker_node" do |docker_node|
+    docker_node.vm.box = "bento/centos-7.2"
+	docker_node.vm.network "private_network", ip: "192.168.26.11"
+   end
+
+ config.vm.define "chef_node" do |chef_node|
+    chef_node.vm.box = "bento/centos-7.2"
+	chef_node.vm.network "private_network", ip: "192.168.27.12"
+   end
+
+ config.vm.define "puppet_node" do |puppet_node|
+    puppet_node.vm.box = "bento/centos-7.2"
+	puppet_node.vm.network "private_network", ip: "192.168.28.13"
+   end
+
+ config.vm.define "ansible_node" do |ansible_node|
+    ansible_node.vm.box = "bento/centos-7.2"
+	ansible_node.vm.network "private_network", ip: "192.168.29.14"
+   end
+
+   config.vm.define "nagios_node" do |nagios_node|
+    nagios_node.vm.box = "bento/centos-7.2"
+	nagios_node.vm.network "private_network", ip: "192.168.30.15"
+   end
+end
