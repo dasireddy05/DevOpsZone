@@ -1,0 +1,105 @@
+# yum update
+# yum install -y git
+# git config --global user.name "dasireddy05"
+# git config --global user.email chittidas05@gmail.com
+# git config --list
+user.name=dasireddy05
+user.email=chittidas05@gmail.com
+# yum install -y java
+# java -version
+openjdk version "1.8.0_131"
+OpenJDK Runtime Environment (build 1.8.0_131-b12)
+OpenJDK 64-Bit Server VM (build 25.131-b12, mixed mode)
+# cd /opt/
+# mkdir backup
+# cd backup/
+@@@@@@@@@ MAVEN @@@@@@@@@@@@@@@@
+# wget http://redrockdigimark.com/apachemirror/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+# tar -zxvf apache-maven-3.5.0-bin.tar.gz
+# mv apache-maven-3.5.0 /opt/
+# cd /opt/
+# cd maven3
+# vi ~/.bashrc
+  
+export M2_HOME=/opt/maven3
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2
+ :wq
+#source ~/.bashrc
+# mvn -version
+Apache Maven 3.5.0 (ff8f5e7444045639af65f6095c62210b5713f426; 2017-04-03T19:39:06Z)
+Maven home: /opt/maven3
+Java version: 1.8.0_131, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.131-3.b12.el7_3.x86_64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-327.el7.x86_64", arch: "amd64", family: "unix"
+
+
+@@@@@@@@@@@@@@ TOMCAT @@@@@@@@@@@@@@@@@@@@@
+#cd /opt/backup/
+# wget http://redrockdigimark.com/apachemirror/tomcat/tomcat-9/v9.0.0.M21/bin/apache-tomcat-9.0.0.M21.tar.gz
+# tar -zvxf apache-tomcat-9.0.0.M21.tar.gz
+# mv apache-tomcat-9.0.0.M21 /opt/
+# cd /opt/
+# cd tomcat9/
+# cd bin/
+# ./startup.sh
+Using CATALINA_BASE:   /opt/tomcat9
+Using CATALINA_HOME:   /opt/tomcat9
+Using CATALINA_TMPDIR: /opt/tomcat9/temp
+Using JRE_HOME:        /./
+Using CLASSPATH:       /opt/tomcat9/bin/bootstrap.jar:/opt/tomcat9/bin/tomcat-juli.jar
+Tomcat started.
+ 
+now we can search in browser it is started or not by using http://192.168.33.10:8080
+if we want to chang tomcat default port number "8080" ----> you can go for conf folder and then vi server.xml
+# cd conf
+# vi server.xml
+ -->
+    <Connector port="8050" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+here we can modifing the port number that is 8080 to 8050
+:wq
+# cd /bin/
+# ./startup.sh
+# cd conf/
+# vi tomcat-users.xml
+<role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <user username="dasireddy" password="reddy41199" roles="manager-gui,manager-script"/>
+</tomcat-users>
+:wq
+# /opt/tomcat9/webapps/manager/META-INF
+# vi context.xml
+ we can delete below lines and save it
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+:wq
+restart the tomcat server and once check it in browser
+now we can download jenkins.war file and copy in webapp folder and the restart the tomcat server
+# cd /opt/backup/
+#  wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+# cp jenkins.war /opt/
+# cd /opt/
+# mv jenkins.war /opt/tomcat9/webapps
+# restart the tomcat server and check it in browser
+---> click on tocat web application manager
+---> in that click on /jenkins
+---> we have to cope the passwrd and we have to encript by using cat 4af9c54f5e614902b8225a4930f99453
+---> install suggested plugins
+
+Create First Admin User
+
+Username:	
+dasireddy
+Password:	
+••••••••••(reddy41199)
+Confirm password:	
+••••••••••
+Full name:	
+bojjireddygari dasireddy
+E-mail address:	
+chittidas05@gmail.com
+
+@@@@@@@@@@@@@@@@@ LAMP @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
