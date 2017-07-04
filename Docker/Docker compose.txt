@@ -1,0 +1,36 @@
+# sudo apt-get update
+# sudo apt-get install python-pip
+# sudo pip install docker-compose
+# mkdir wordpress
+# cd wordpress
+# vi docker-compose.yml
+wordpress:
+  image: wordpress
+  links:
+    - wordpress_db:mysql
+  ports:
+    - 8080:80
+wordpress_db:
+  image: mariadb
+  environment:
+    MYSQL_ROOT_PASSWORD: dastech
+phpmyadmin:
+  image: corbinu/docker-phpmyadmin
+  links:
+    - wordpress_db:mysql
+  ports:
+    - 8081:80
+  environment:
+    MYSQL_USERNAME: root
+    MYSQL_ROOT_PASSWORD: dastech
+:wq!
+
+# docker-compose up -d
+
+we can search in browser with ip address http://192.168.33.15:8080
+  wordpress username  : dasireddy
+            password  : dastech
+  phpmyadmin username : root
+             password : dastech
+
+   

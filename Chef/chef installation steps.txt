@@ -1,0 +1,15 @@
+chef DK
+------------------
+download windows 7 for chef dk
+https://downloads.chef.io/chefdk
+
+setup server on host
+https://manage.chef.io/login
+ username reddydas05
+ passwd   reddy.2187
+ email dasireddybgrg@gmail.com
+
+we can create organigation information
+agritech
+agtech
+we can download staterkit  
